@@ -1,0 +1,18 @@
+--Create a Yarn Store Database
+
+CREATE TABLE Sales (id INTEGER PRIMARY KEY, name TEXT, fiber
+TEXT, color TEXT, sold INTEGER, Cost REAL);
+
+INSERT INTO Sales VALUES (1, "Paintbox", "Cotton", "Soft Fudge", 6, 14.88);
+INSERT INTO Sales VALUES (2, "Paintbox", "Cotton", "Lipstick Pink", 4, 9.92);
+INSERT INTO Sales VALUES (3, "Paintbox", "Cotton", "Cotton Candy", 3, 7.44);
+INSERT INTO Sales VALUES (4, "Lions Brand", "Acrylic", "Blueberry", 4, 15.80);
+INSERT INTO Sales VALUES (5, "Lanna's Choice", "Acrylic", "Golden Yellow", 2, 7.90);
+
+--Display the database ordered by cost.
+Select * from Sales ORDER BY cost;
+
+--Which yarn sold the most units?
+SELECT max(sold) from Sales;
+
+
