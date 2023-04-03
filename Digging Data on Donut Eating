@@ -81,5 +81,5 @@ SELECT Count(*) AS "Years",
     END AS "More or Less Comparison" FROM winstons_donut_logs
 GROUP BY "More or Less Comparison";
   
-/*Show How often Donuts Eaten was over 1000*/
+/*Show How often Donuts Eaten was over 1000 times*/
 SELECT years_old, donuts_eaten, reason FROM winstons_donut_logs WHERE donuts_eaten >1000; 
