@@ -1,0 +1,55 @@
+/*Create a table of famous actors and their years active in the industry*/
+
+CREATE TABLE famous_actors (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, birthdate TEXT, years_active INTEGER, movie_id INTEGER);
+
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Tom Hanks", "July 9, 1956", 46, 1);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Harrison Ford", "July 13th, 1942", 59, 2);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Matt Damon", "October 8th, 1970", 36, 4);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Michelle Yeoh", "August 6th, 1962", 40, 3);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Ke Huy Quan", "August 20th, 1971", 19, 2);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Jamie Lee Curtis", "November 22nd, 1958", 46, 3);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Liv Tyler", "July 1st, 1977", 32, 1);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Keanu Reeves", "September 2nd, 1964", 39, 5);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Tilda Swinton", "November 5th, 1960", 39, 6);
+INSERT INTO famous_actors (name, birthdate, years_active, movie_id) VALUES ("Benedict Cumberbatch", "July 19th, 1976", 25, 6);
+
+/*Create a table of popular movies*/
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, release_year INTEGER);
+
+INSERT INTO movies (name, release_year) VALUES ("That Thing You Do!", 1996);
+INSERT INTO movies (name, release_year) VALUES ("Indiana Jones and the Temple of Doom", 1984);
+INSERT INTO movies (name, release_year) VALUES ("Everything Everwhere All at Once", 2022);
+INSERT INTO movies (name, release_year) VALUES ("Saving Private Ryan", 1998);
+INSERT INTO movies (name, release_year) VALUES ("John Wick:Chapter 4", 2023);
+INSERT INTO movies (name, release_year) VALUES ("Doctor Strange", 2016);
+
+/*Create a table marking the actors with co-stars for movies they were in*/
+
+CREATE TABLE co_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, actor1_id INTEGER, actor2_id INTEGER);
+
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (1,3);
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (1,7);
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (2,5);
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (4,5);
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (4,6);
+INSERT INTO co_stars (actor1_id, actor2_id) VALUES (9,10);
+
+/*Make a query to show the name of the actor and movies they were in.*/
+SELECT famous_actors.name, movies.name
+    FROM famous_actors
+    LEFT OUTER JOIN movies
+    ON famous_actors.movie_id=movies.id;
+    
+/*Make a query to show which actors were co-stars in their work*/
+SELECT a.name, b.name
+    FROM co_stars
+    JOIN famous_actors a
+    ON co_stars.actor1_id = a.id
+    JOIN famous_actors b
+    ON co_stars.actor2_id = b.id;
+    
+/*Make a query to organize movies by release date*/
+SELECT name, release_year FROM movies 
+    ORDER BY release_year;
+    
